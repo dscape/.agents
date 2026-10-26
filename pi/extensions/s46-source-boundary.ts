@@ -113,7 +113,17 @@ function isSensitiveLegacyPath(target: string): boolean {
   const segments = pathFromRoot.split(sep);
   const name = basename(target).toLowerCase();
 
-  if (segments[0] === "model-keys" || segments[0] === "release-authority-credentials") return true;
+  if (
+    segments[0] === "model-keys" ||
+    segments[0] === "production-backups" ||
+    segments[0] === "release-authority-credentials"
+  )
+    return true;
+  if (
+    segments[0] === "airplane-runner-provisioner" &&
+    segments.some((segment) => segment.startsWith("production-"))
+  )
+    return true;
   if (segments.includes("release-broker-production")) return true;
   if (name === "auth.json" || /^models.*\.json$/.test(name)) return true;
   if (
@@ -125,6 +135,7 @@ function isSensitiveLegacyPath(target: string): boolean {
     return true;
   if (name.endsWith(".env") || name.endsWith(".pem") || name.endsWith(".key")) return true;
   if (/^id_(?:rsa|ecdsa|ed25519)(?!\.pub$)/.test(name)) return true;
+  if (/(?:private.*key|key.*private|signing-key|password|secret|token)/.test(name)) return true;
   if (name.endsWith(".log") || name === "stdout" || name === "stderr") return true;
   return false;
 }

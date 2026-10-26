@@ -65,6 +65,20 @@ test("allows evidence reads but blocks likely secret material", async () => {
     }),
   );
   assertBlocked(await call("read", { path: join(homedir(), ".s46", "run", "gateway.env") }));
+  assertBlocked(
+    await call("read", {
+      path: join(
+        homedir(),
+        ".s46",
+        "airplane-runner-provisioner",
+        "production-20261026",
+        "identity-signing-key",
+      ),
+    }),
+  );
+  assertBlocked(
+    await call("read", { path: join(homedir(), ".s46", "production-backups", "snapshot") }),
+  );
 });
 
 test("blocks shell access by command reference or working directory", async () => {
