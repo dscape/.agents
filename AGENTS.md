@@ -1,6 +1,8 @@
 ## Workflow
 
 - Starting a task: Read this guide end-to-end. Re-skim when major decisions arise or requirements shift.
+- Source boundary: Create and evolve reusable code only inside a version-controlled worktree. Never use caches, state, evidence, temporary directories, or home-dot directories such as `~/.s46` as canonical source.
+- Artifact boundary: Treat generated source snapshots and scripts in state/evidence directories as read-only records. Do not execute, import, edit, or copy them back into source without explicit user approval and provenance verification.
 - Reviewing git status or diffs: Treat them as read-only. Never revert or assume missing changes were yours.
 - Planning: Study the existing codebase’s architecture, patterns, and conventions first; use external docs only when needed. Prioritize consistency, then simplicity.
 - Trade-offs: If there's meaningful tension between approaches, ask the user before committing.
