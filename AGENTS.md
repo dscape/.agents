@@ -24,7 +24,7 @@
 ## Collaboration
 
 - When review feedback is numbered, respond point-by-point and clearly mark what was addressed vs. deferred.
-- Never push or open pull requests without the user explicitly asking you to.
+- For authorized work, push changes and open or merge pull requests as needed without further permission. Respect required human reviews, CI, and branch protection.
 
 ## Communication
 
